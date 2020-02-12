@@ -1,1 +1,7 @@
 /* This will be my CSS stylesheet */
+body {
+  color: green;
+  font-family: Lato;
+  font-size: 18px;
+  line-height: 1.5;
+}
