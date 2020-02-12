@@ -10,3 +10,13 @@ var repository = [
   {name: 'Wartortle', height: 1, type: ['water'], evolution: 'at level' + 36},
   {name: 'Blastoise', height: 1.6, type: ['water'], evolution: 'final evolution'}
 ];
+
+// Create a for loop that iterates over each item in repository and use document.write() inside the loop's code to write the pokemon name on website.
+for (var i = 0; i < repository.length; i++){
+  if (repository[i].height > 0.7){ // If height is greater than 0.7...
+    document.write(repository[i].name + ' (height: ' + repository[i].height + ')' + ' -Wow!! That\'s a bigg\'n' + '<br>') // Write name and height with message -Wow!! That's a bigg'n.
+  }else{ // If height is not greater than 0.7
+    document.write(repository[i].name + ' (height: ' + repository[i].height + ')<br>') // Only write the name and height.
+  }
+}
+// NEED TO SPEND MORE TIME ON THE ABOVE TYPE OF CODE!!!!
