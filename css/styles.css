@@ -1,6 +1,11 @@
 /* This will be my CSS stylesheet */
+
+/* background color body: #fffafa;
+Font color: #065535;  */
+
 body {
-  color: green;
+  background: #fffafa;
+  color: #065535;
   font-family: Lato;
   font-size: 18px;
   line-height: 1.5;
