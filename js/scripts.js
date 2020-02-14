@@ -1,14 +1,14 @@
 // JavaScript sheet
 var repository = [
-  {name: 'Bulbasaur', height: 0.7, type: ['grass', 'poison'], evolution: 'at level' + 16},
-  {name: 'Ivysaur', height: 1, type: ['grass', 'poison'], evolution: 'at level' + 32},
-  {name: 'Venusaur', height: 2, type: ['grass', 'poison'], evolution: 'final evolution'},
-  {name: 'Charmander', height: 0.6, type: ['fire'], evolution: 'at level' + 16},
-  {name: 'Charmeleon', height: 1.1, type: ['fire'], evolution: 'at level' + 36},
-  {name: 'Charizard', height: 1.7, type: ['fire', 'flying'], evolution: 'final evolution'},
-  {name: 'Squirtle', height: 0.5, type: ['water'], evolution: 'at level' + 16},
-  {name: 'Wartortle', height: 1, type: ['water'], evolution: 'at level' + 36},
-  {name: 'Blastoise', height: 1.6, type: ['water'], evolution: 'final evolution'}
+  {name: 'Bulbasaur', height: 0.7 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 16},
+  {name: 'Ivysaur', height: 1 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 32},
+  {name: 'Venusaur', height: 2 + 'm', type: ['grass', 'poison'], evolution: 'final evolution'},
+  {name: 'Charmander', height: 0.6 + 'm', type: ['fire'], evolution: 'at level' + 16},
+  {name: 'Charmeleon', height: 1.1 + 'm', type: ['fire'], evolution: 'at level' + 36},
+  {name: 'Charizard', height: 1.7 + 'm', type: ['fire', 'flying'], evolution: 'final evolution'},
+  {name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
+  {name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
+  {name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
 ];
 
 // More concise and clean forEach method.
@@ -22,7 +22,7 @@ repository.forEach(function(currentItem){
 
 
 // Create a for loop that iterates over each item in repository and use document.write() inside the loop's code to write the pokemon name on website.
-/* Here is the longer (standard (for) loop method.) above is the shorter cleaner version 
+/* Here is the longer (standard (for) loop method.) above is the shorter cleaner version
 for (var i = 0; i < repository.length; i++){
   if (repository[i].height > 0.7){ // If height is greater than 0.7...
     document.write(repository[i].name + ' (height: ' + repository[i].height + ')' + ' -Wow!! That\'s a bigg\'n' + '<br>') // Write name and height with message -Wow!! That's a bigg'n.
