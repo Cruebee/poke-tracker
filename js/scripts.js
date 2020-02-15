@@ -1,18 +1,34 @@
 // JavaScript sheet
-var repository = [
-  {name: 'Bulbasaur', height: 0.7 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 16},
-  {name: 'Ivysaur', height: 1 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 32},
-  {name: 'Venusaur', height: 2 + 'm', type: ['grass', 'poison'], evolution: 'final evolution'},
-  {name: 'Charmander', height: 0.6 + 'm', type: ['fire'], evolution: 'at level' + 16},
-  {name: 'Charmeleon', height: 1.1 + 'm', type: ['fire'], evolution: 'at level' + 36},
-  {name: 'Charizard', height: 1.7 + 'm', type: ['fire', 'flying'], evolution: 'final evolution'},
-  {name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
-  {name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
-  {name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
-];
+// Wrapping repository into an IIFE
+var pokemonRepository = (function(){
+  var repository = [
+    {name: 'Bulbasaur', height: 0.7 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 16},
+    {name: 'Ivysaur', height: 1 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 32},
+    {name: 'Venusaur', height: 2 + 'm', type: ['grass', 'poison'], evolution: 'final evolution'},
+    {name: 'Charmander', height: 0.6 + 'm', type: ['fire'], evolution: 'at level' + 16},
+    {name: 'Charmeleon', height: 1.1 + 'm', type: ['fire'], evolution: 'at level' + 36},
+    {name: 'Charizard', height: 1.7 + 'm', type: ['fire', 'flying'], evolution: 'final evolution'},
+    {name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
+    {name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
+    {name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
+  ];
+
+  function add(pokemon) {
+    repository.push(pokemon);
+  }
+
+  function getAll() {
+    return repository;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
 
 // More concise and clean forEach method.
-repository.forEach(function(currentItem){
+pokemonRepository.getAll().forEach(function(currentItem){ // updates the forEach loop to use the .getAll function to print array.
   if (currentItem.height > 0.7 + 'm'){
   document.write('<p>' + currentItem.name + ' (height: ' + currentItem.height + ')' + ' -WOW! That\'s a bigg\'n.</p>');
   }else{
