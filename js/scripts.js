@@ -14,7 +14,11 @@ var pokemonRepository = (function(){
   ];
 
   function add(pokemon) {
+    if (typeof pokemon === 'object' && Object.keys(pokemon).every(p => ['name', 'height', 'type', 'evolution'].include(p))) { // I believe this limitss what can be added to the array above to only objects.
     repository.push(pokemon);
+  }else{
+    console.log('Unable to add Pokemon. Use format: [\'name\', \'height\', \'type\', \'evolution\'].')
+  }
   }
 
   function getAll() {
