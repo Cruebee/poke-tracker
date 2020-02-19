@@ -14,7 +14,7 @@ var pokemonRepository = (function(){
   ];
 
   function add(pokemon) {
-    if (typeof pokemon === 'object' && Object.keys(pokemon).every(p => ['name', 'height', 'type', 'evolution'].include(p))) { // This line of code ensures only objects can be added to the repository and only objects that fit the format layed out.
+    if (typeof pokemon === "object" && Object.keys(pokemon).every(p => ['name', 'height', 'type', 'evolution'].include(p))) { // This line of code ensures only objects can be added to the repository and only objects that fit the format layed out.
     repository.push(pokemon);
   }else{
     console.log('Unable to add Pokemon. Use format: [\'name\', \'height\', \'type\', \'evolution\'].')
