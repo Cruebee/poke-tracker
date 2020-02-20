@@ -6,7 +6,54 @@ Font color: #065535;  */
 body {
   background: #fffafa;
   color: #065535;
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   font-size: 18px;
   line-height: 1.5;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+button {
+  background: lightblue;
+  color: black;
+  font-family: inherit;
+  font-size: inherit;
+  border: 2px solid black;
+  transition: 0.2s opacity;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+button:active {
+  cursor: pointer;
+  opacity: 0.8;
+  border: 2px solid green;
+}
+
+.pokemon-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  margin-left: 2px;
+  padding: 0;
+}
+
+.pokemon-list li {
+  padding: 2px;
+}
+
+@media all and (max-width: 500px) {
+  .body {
+    padding: 0;
+  }
 }
