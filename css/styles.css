@@ -19,24 +19,31 @@ h1 {
 }
 
 button {
+  background: tan;
+  color: black;
+  font-family: inherit;
+  font-size: inherit;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  transition: 0.4s opacity;
+}
+
+.list-button {
+  width: 250px;
+  height: 45px;
   background: lightblue;
   color: black;
   font-family: inherit;
   font-size: inherit;
   border: 2px solid black;
-  transition: 0.2s opacity;
+  transition: 0.4s opacity;
 }
 
 button:hover,
-button:focus {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
+button:focus,
 button:active {
+  border: 2px solid green;
   cursor: pointer;
   opacity: 0.8;
-  border: 2px solid green;
 }
 
 .pokemon-list {
