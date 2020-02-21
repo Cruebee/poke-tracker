@@ -14,15 +14,23 @@ var pokemonRepository = (function () {
   ];
 
   function addListItem(pokemon) {
-    var listItem = document.createElement('li');
-    var listButton = document.createElement('button');
-  listButton.innerText = pokemon;
-  listButton.classList.add('list-button');
-
-    listItem.appendChild(listButton);
-  $pokemonList.appendChild(listItem);
+    var $listItem = document.createElement('li');
+    var $listButton = document.createElement('button');
+  $listButton.innerText = pokemon;
+  $listButton.classList.add('list-button');
+// $listItem is appended to the <ul> in the HTML doc and the $listButton is appended to the $listItem.
+    $listItem.appendChild($listButton);
+  $pokemonList.appendChild($listItem);
+  $listButton.addEventListener('click', function(event) {
+    showDetails(pokemon);
+  })
+  }
+// This function will allow each pokemon name to be logged in the console once called on by the event above.^^
+  function showDetails(pokemon){
+    console.log(pokemon);
   }
 
+// This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
   function add(pokemon) {
     if (typeof pokemon === 'object' && Object.keys(pokemon).every(c => ['name', 'height', 'type', 'evolution'].includes(c))) { // The c inside the () on .every and .includes is a placeholder rep for "creature".
     repository.push(pokemon);
@@ -42,12 +50,19 @@ var pokemonRepository = (function () {
   };
 })();
 
+// This calls the add function to act on the pokemonRepository telling it to add a pokemon which fits the correct format.
+// Note must be added before the forEach loop that iterates over all of the pokemon objects in the pokemonRepository array.
+pokemonRepository.add({name: 'Pikachu', height: 0.4 + 'm', type: ['electric'], evolution: 'evolves with stone'});
+
 var $pokemonList = document.querySelector('.pokemon-list');
 
 // More concise and clean forEach method.
 pokemonRepository.getAll().forEach(function(addListItem){
   pokemonRepository.addListItem(addListItem.name);
 });
+
+
+
 
 
 // Old forEach to iterate over repository array.
@@ -71,4 +86,3 @@ for (var i = 0; i < repository.length; i++){
   }
 }
 */
-// NEED TO SPEND MORE TIME ON THE ABOVE TYPE OF CODE!!!!
