@@ -1,17 +1,8 @@
 // JavaScript sheet
 // Wrapping repository into an IIFE
 var pokemonRepository = (function () {
-  var repository = [
-    {name: 'Bulbasaur', height: 0.7 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 16},
-    {name: 'Ivysaur', height: 1 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 32},
-    {name: 'Venusaur', height: 2 + 'm', type: ['grass', 'poison'], evolution: 'final evolution'},
-    {name: 'Charmander', height: 0.6 + 'm', type: ['fire'], evolution: 'at level' + 16},
-    {name: 'Charmeleon', height: 1.1 + 'm', type: ['fire'], evolution: 'at level' + 36},
-    {name: 'Charizard', height: 1.7 + 'm', type: ['fire', 'flying'], evolution: 'final evolution'},
-    {name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
-    {name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
-    {name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
-  ];
+  var repository = [];
+  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function addListItem(pokemon) {
     var $listItem = document.createElement('li');
@@ -43,22 +34,36 @@ var pokemonRepository = (function () {
     return repository;
   }
 
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        var pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    search: search,
+    loadList: loadList
   };
 })();
 
-// This calls the add function to act on the pokemonRepository telling it to add a pokemon which fits the correct format.
-// Note must be added before the forEach loop that iterates over all of the pokemon objects in the pokemonRepository array.
-pokemonRepository.add({name: 'Pikachu', height: 0.4 + 'm', type: ['electric'], evolution: 'evolves with stone'});
 
-var $pokemonList = document.querySelector('.pokemon-list');
-
-// More concise and clean forEach method.
-pokemonRepository.getAll().forEach(function(addListItem){
-  pokemonRepository.addListItem(addListItem.name);
+pokemonRepository.loadList().then(function() {
+  // Now the data is loaded!
+  pokemonRepository.getAll().forEach(function(pokemon){
+    addListItem(pokemon);
+  });
 });
 
 
@@ -85,4 +90,27 @@ for (var i = 0; i < repository.length; i++){
     document.write(repository[i].name + ' (height: ' + repository[i].height + ')<br>') // Only write the name and height.
   }
 }
+
+Here is the Repository Created for building the inital app:
+
+{name: 'Bulbasaur', height: 0.7 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 16},
+{name: 'Ivysaur', height: 1 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 32},
+{name: 'Venusaur', height: 2 + 'm', type: ['grass', 'poison'], evolution: 'final evolution'},
+{name: 'Charmander', height: 0.6 + 'm', type: ['fire'], evolution: 'at level' + 16},
+{name: 'Charmeleon', height: 1.1 + 'm', type: ['fire'], evolution: 'at level' + 36},
+{name: 'Charizard', height: 1.7 + 'm', type: ['fire', 'flying'], evolution: 'final evolution'},
+{name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
+{name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
+{name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
+
+// This calls the add function to act on the pokemonRepository telling it to add a pokemon which fits the correct format.
+// Note must be added before the forEach loop that iterates over all of the pokemon objects in the pokemonRepository array.
+pokemonRepository.add({name: 'Pikachu', height: 0.4 + 'm', type: ['electric'], evolution: 'evolves with stone'});
+
+var $pokemonList = document.querySelector('.pokemon-list');
+
+// More concise and clean forEach method.
+pokemonRepository.getAll().forEach(function(addListItem){
+  pokemonRepository.addListItem(addListItem.name);
+});
 */
