@@ -118,15 +118,48 @@ for (var i = 0; i < repository.length; i++){
 
 Here is the Repository Created for building the inital app:
 
-{name: 'Bulbasaur', height: 0.7 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 16},
-{name: 'Ivysaur', height: 1 + 'm', type: ['grass', 'poison'], evolution: 'at level' + 32},
-{name: 'Venusaur', height: 2 + 'm', type: ['grass', 'poison'], evolution: 'final evolution'},
-{name: 'Charmander', height: 0.6 + 'm', type: ['fire'], evolution: 'at level' + 16},
-{name: 'Charmeleon', height: 1.1 + 'm', type: ['fire'], evolution: 'at level' + 36},
-{name: 'Charizard', height: 1.7 + 'm', type: ['fire', 'flying'], evolution: 'final evolution'},
-{name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
-{name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
+{name: 'Bulbasaur',
+height: 0.7 + 'm',
+type: ['grass', 'poison'],
+evolution: 'at level' + 16},
+
+{name: 'Ivysaur',
+height: 1 + 'm',
+type: ['grass', 'poison'],
+evolution: 'at level' + 32},
+
+{name: 'Venusaur',
+height: 2 + 'm',
+type: ['grass', 'poison'],
+evolution: 'final evolution'},
+
+{name: 'Charmander',
+height: 0.6 + 'm',
+type: ['fire'],
+evolution: 'at level' + 16},
+
+{name: 'Charmeleon',
+height: 1.1 + 'm',
+type: ['fire'],
+evolution: 'at level' + 36},
+
+{name: 'Charizard',
+height: 1.7 + 'm',
+type: ['fire', 'flying'],
+evolution: 'final evolution'},
+
+{name: 'Squirtle',
+height: 0.5 + 'm',
+type: ['water'],
+evolution: 'at level' + 16},
+
+{name: 'Wartortle',
+height: 1 + 'm',
+type: ['water'],
+evolution: 'at level' + 36}, // Note the difference between this object's readablitity and the one below it.
+// The more properties an object has the harder it will be to read if you keep them all on one line as seen below:
 {name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
+];
 
 // This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
   function add(pokemon) {
