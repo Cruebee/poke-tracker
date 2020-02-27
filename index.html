@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <title>Cruebee's Poke-tracker 2000</title>
-  </head>
-  <body>
-<div class="app-title">
-<h1>Pokedex 2000</h1>
-</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <title>Cruebee's Poke-tracker 2000</title>
+</head>
+<body>
+  <div class="app-title">
+    <h1>Pokedex 2000</h1>
+  </div>
 
-<div class="pokedex">
+  <div class="pokedex">
 
-<ul class="pokemon-list"></ul>
+    <ul class="pokemon-list"></ul>
 
-</div>
+  </div>
 
-    <script src="js/scripts.js"></script>
-  </body>
+  <script src="js/promise-polyfill.js"></script>
+  <script src="js/fetch-polyfill.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
 </html>
