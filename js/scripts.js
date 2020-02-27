@@ -4,35 +4,34 @@ var pokemonRepository = (function () {
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-  function addListItem(pokemon) {
-    var $listItem = document.createElement('li');
-    var $listButton = document.createElement('button');
-  $listButton.innerText = pokemon;
+  // This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
+    function add(pokemon) {
+      repository.push(pokemon);
+      }
+
+
+    function getAll() {
+      return repository;
+    }
+
+// Create a list of items pulled from API
+function addListItem(pokemon) {
+  // assign a variable to ul list
+  var $pokemonList = document.querySelector('.pokemon-list');
+  // variable for list item
+  var $listItem = document.createElement('li');
+  //variable for button
+  var $listButton = document.createElement('button');
+  $listButton.innerText = pokemon.name;
   $listButton.classList.add('list-button');
-// $listItem is appended to the <ul> in the HTML doc and the $listButton is appended to the $listItem.
-    $listItem.appendChild($listButton);
+  // $listItem is appended to the <ul> in the HTML doc and the $listButton is appended to the $listItem.
+  $listItem.appendChild($listButton);
   $pokemonList.appendChild($listItem);
   $listButton.addEventListener('click', function(event) {
     showDetails(pokemon);
-  })
-  }
-// This function will allow each pokemon name to be logged in the console once called on by the event above.^^
-  function showDetails(pokemon){
-    console.log(pokemon);
-  }
+  });
+}
 
-// This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
-  function add(pokemon) {
-    if (typeof pokemon === 'object' && Object.keys(pokemon).every(c => ['name', 'height', 'type', 'evolution'].includes(c))) { // The c inside the () on .every and .includes is a placeholder rep for "creature".
-    repository.push(pokemon);
-    }else{
-        console.log('Unable to add Pokemon. Use format: [\'name\', \'height\', \'type\', \'evolution\'] .')
-    }
-  }
-
-  function getAll() {
-    return repository;
-  }
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -47,27 +46,53 @@ var pokemonRepository = (function () {
       });
     }).catch(function (e) {
       console.error(e);
-    })
+    });
   }
 
+
+  function loadDetails(item) {
+    var url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now add the details to the item.
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = Object.keys(details.types);
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+
+// Returns all previous functions so they can be used outside IIFE
   return {
     add: add,
     getAll: getAll,
-    search: search,
-    loadList: loadList
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
+// END IIFE POKEDEX REPOSITORY
 
-
+/* The loadList method will fetch data from the API, then add it to repository with the add function implemented earlier.
+you want each item to have a name and a detailsUrl property. Use detailsUrl property to load detailed data for a given pokemon.
+To do that add in the loadDetails() function */
 pokemonRepository.loadList().then(function() {
   // Now the data is loaded!
   pokemonRepository.getAll().forEach(function(pokemon){
-    addListItem(pokemon);
+    pokemonRepository.addListItem(pokemon);
   });
 });
 
 
-
+// This function will allow each pokemon name to be logged in the console once called on by the event above.^^
+  function showDetails(item){
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
 
 
 // Old forEach to iterate over repository array.
@@ -102,6 +127,15 @@ Here is the Repository Created for building the inital app:
 {name: 'Squirtle', height: 0.5 + 'm', type: ['water'], evolution: 'at level' + 16},
 {name: 'Wartortle', height: 1 + 'm', type: ['water'], evolution: 'at level' + 36},
 {name: 'Blastoise', height: 1.6 + 'm', type: ['water'], evolution: 'final evolution'}
+
+// This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
+  function add(pokemon) {
+    if (typeof pokemon === 'object' && Object.keys(pokemon).every(p => ['name', 'height', 'type', 'evolution'].includes(p))) { // The p inside the () on .every and .includes is a placeholder rep for "pokemon".
+    repository.push(pokemon);
+    }else{
+        console.log('Unable to add Pokemon. Use format: [\'name\', \'height\', \'type\', \'evolution\'] .')
+    }
+  }
 
 // This calls the add function to act on the pokemonRepository telling it to add a pokemon which fits the correct format.
 // Note must be added before the forEach loop that iterates over all of the pokemon objects in the pokemonRepository array.
