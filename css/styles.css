@@ -1,4 +1,5 @@
-/* This will be my CSS stylesheet */
+/* This will be my CSS stylesheet
+Remember mor general rules first more specific rules later. */
 
 /* background color body: #fffafa;
 Font color: #065535;  */
@@ -13,6 +14,10 @@ Font color: #065535;  */
   --secondary-font-color: #065535;
   --secondary-button-color: #add8e6;
   --selected-border: #008000;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -59,12 +64,27 @@ button:active {
   opacity: 0.8;
 }
 
+.app-title {
+  min-width: 250px;
+  max-width: 1200px;
+  display: block;
+  justify-content: center;
+}
+
+.pokedex {
+  min-width: 250px;
+  max-width: 1200px;
+  margin: 2px;
+  border: 2px solid rgba(0, 230, 64, 0.6);
+}
+
 .pokemon-list {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
-  justify-content: center;
   padding: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokemon-list li {
