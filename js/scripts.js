@@ -67,7 +67,7 @@ function addListItem(pokemon) {
   // This function will allow for searching for a pokemon by name:
   function search(query){
     return repository.filter(function(creature){
-      return cereature.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+      return creature.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     })
   }
 
@@ -101,6 +101,11 @@ pokemonRepository.loadList().then(function() {
       console.log(item);
     });
   }
+
+  // In order to search for pokemon by name and have their name displayed in the console use this call:
+  console.log(pokemonRepository.search('ivy').map(function(pokemon){
+    return pokemon.name
+  }))
 
 
 // Old forEach to iterate over repository array.
