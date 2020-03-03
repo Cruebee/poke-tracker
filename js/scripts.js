@@ -64,11 +64,19 @@ function addListItem(pokemon) {
     });
   }
 
+  // This function will allow for searching for a pokemon by name:
+  function search(query){
+    return repository.filter(function(creature){
+      return cereature.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    })
+  }
+
 
 // Returns all previous functions so they can be used outside IIFE
   return {
     add: add,
     getAll: getAll,
+    search: search,
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails
