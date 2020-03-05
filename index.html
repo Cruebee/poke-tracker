@@ -9,11 +9,20 @@
   <title>Cruebee's Poke-tracker 2000</title>
 </head>
 <body>
-  <div class="app-title">
-    <h1>Pokedex 2000</h1>
+  <div class="app-wrap">
+    <div id="app-header">
+      <div id="pokedex-title" class="app-header__item">
+        <h1>Pokedex 2000</h1>
+      </div>
+
+      <div id="input-wrap" class="app-header__item">
+        <input class="input-search" type="text" placeholder="Search by Name"> <!-- input doesn't require a closing tag -->
+      </div>
+      
+    </div>
   </div>
 
-  <div class="pokedex">
+  <div class="app-list-wrap">
 
     <ul class="pokemon-list"></ul>
 
