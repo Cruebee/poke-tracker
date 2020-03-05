@@ -4,16 +4,6 @@ var pokemonRepository = (function () {
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-  // This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
-    function add(pokemon) {
-      repository.push(pokemon);
-      }
-
-
-    function getAll() {
-      return repository;
-    }
-
 // Create a list of items pulled from API
 function addListItem(pokemon) {
   // assign a variable to ul list
@@ -32,7 +22,14 @@ function addListItem(pokemon) {
   });
 }
 
+// This function will allow each pokemon name to be logged in the console once called on by the event above.^^
+  function showDetails(item){
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
 
+// This function loads the list of pokemon from the API:
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -49,7 +46,7 @@ function addListItem(pokemon) {
     });
   }
 
-
+// This function loads the details of each pokemon from the API:
   function loadDetails(item) {
     var url = item.detailsUrl;
     return fetch(url).then(function (response) {
@@ -66,10 +63,20 @@ function addListItem(pokemon) {
 
   // This function will allow for searching for a pokemon by name:
   function search(query){
-    return repository.filter(function(creature){
+    return repository.filter(function(creature){ // need to figure out how to pull up pokemon names now that repository is using an outside API to create pokemon buttons.
       return creature.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     })
   }
+
+  // This function will add a pokemon to the pokemonRepository if the pokemon to be added fits the correct format set by the if else statements.
+    function add(pokemon) {
+      repository.push(pokemon);
+      }
+
+// This function will return the data within the repository:
+    function getAll() {
+      return repository;
+    }
 
 
 // Returns all previous functions so they can be used outside IIFE
@@ -93,14 +100,6 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-
-// This function will allow each pokemon name to be logged in the console once called on by the event above.^^
-  function showDetails(item){
-    pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
-    });
-  }
 
   // In order to search for pokemon by name and have their name displayed in the console use this call:
   console.log(pokemonRepository.search('ivy').map(function(pokemon){
