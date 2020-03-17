@@ -23,7 +23,7 @@ Font color: #065535;  */
 body {
   background: var(--primary-background);
   color: var(--secondary-font-color);
-  font-family: Lato, sans-serif;
+  font-family: 'Gloria Hallelujah', cursive, sans-serif;
   font-size: var(--primary-font-size);
   line-height: 1.5;
 }
