@@ -20,30 +20,89 @@
     <title>Cruebee's Poke-tracker 2000</title>
   </head>
   <body>
+    <header class="page-header">
+      <img
+        src="img/crue_jameson_logo.svg"
+        alt="Crue Jameson"
+        class="crue-logo"
+      />
+
+      <nav class="main-navigation page-header__item">
+        <ul role="menubar" class="navigation-list">
+          <li role="presentation">
+            <a
+              href="index.html"
+              role="menuitem"
+              target="_self"
+              class="navigation-list__item navigation-list__item--active"
+              >Pokedex</a
+            >
+          </li>
+          <li role="presentation">
+            <a
+              href="https://cruebee.github.io/portfolio-website/"
+              role="menuitem"
+              target="_blank"
+              class="navigation-list__item"
+              >About Creator</a
+            >
+          </li>
+          <li role="presentation">
+            <a
+              href="#"
+              role="menuitem"
+              target="self"
+              class="navigation-list__item"
+              >More coming soon!</a
+            >
+          </li>
+          <li role="presentation">
+            <a
+              href="https://cruebee.github.io/portfolio-website/contact.html"
+              role="menuitem"
+              target="_blank"
+              class="navigation-list__item"
+              >Contact Crue</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
     <div class="app-wrap">
       <div id="app-header">
         <div id="pokedex-title" class="app-header__item">
-          <h1>Pokedex 2000</h1>
+          <h1 class="title-name">Pokedex 2000</h1>
         </div>
 
         <div id="input-wrap" class="app-header__item">
-          <input
-            class="input-search"
-            type="text"
-            placeholder="Search by Name"
-          />
+          <form class="poke-search">
+            <input
+              class="search-form"
+              id="pokemon-search"
+              onkeyup="pokemonSearch()"
+              type="search"
+              autocomplete="off"
+              placeholder="Search..."
+            />
+            <button class="search-button" type="submit">
+              Search
+            </button>
+          </form>
           <!-- input doesn't require a closing tag -->
         </div>
       </div>
     </div>
 
     <div class="app-list-wrap">
-      <ul class="pokemon-list"></ul>
+      <div id="pokeSearchDiv">
+        <ul class="pokemon-list" id="poke-list"></ul>
+      </div>
       <div id="modal-container"></div>
     </div>
 
     <script src="src/js/promise-polyfill.js"></script>
-    <script src="src/jss/fetch-polyfill.js"></script>
+    <script src="src/js/fetch-polyfill.js"></script>
     <script src="src/js/scripts.js"></script>
   </body>
 </html>
