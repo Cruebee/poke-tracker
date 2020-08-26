@@ -1,6 +1,6 @@
 // JavaScript sheet
 // Wrapping repository into an IIFE
-var pokemonRepository = (function() {
+var pokemonRepository = (function () {
   // whenever pokemonRepository is accessed, it will represent an object with the two keys: (add) (getAll).
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -10,19 +10,19 @@ var pokemonRepository = (function() {
   // This function should Load a list of pokemon from the selected API:
   function loadList() {
     return fetch(apiUrl)
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(json) {
-        json.results.forEach(function(item) {
+      .then(function (json) {
+        json.results.forEach(function (item) {
           var pokemon = {
             name: item.name,
-            detailsUrl: item.url
+            detailsUrl: item.url,
           };
           add(pokemon);
         });
       })
-      .catch(function(e) {
+      .catch(function (e) {
         /* eslint-disable no-console */
         console.error(e);
         /* eslint-enable no-console */
@@ -32,10 +32,10 @@ var pokemonRepository = (function() {
   function loadDetails(item) {
     var url = item.detailsUrl;
     return fetch(url)
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(details) {
+      .then(function (details) {
         // Now details are added to item:
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
@@ -45,7 +45,7 @@ var pokemonRepository = (function() {
           item.types.push(details.types[i].type.name);
         }
       })
-      .catch(function(e) {
+      .catch(function (e) {
         /* eslint-disable no-console */
         console.error(e);
         /* eslint-enable no-console */
@@ -62,7 +62,7 @@ var pokemonRepository = (function() {
     $listButton.classList.add('list-button');
     $listItem.appendChild($listButton);
     $pokemonList.appendChild($listItem);
-    $listButton.addEventListener('click', function() {
+    $listButton.addEventListener('click', function () {
       showDetails(pokemon); // Event listener parameter must be the same as addListItem
     });
   }
@@ -112,7 +112,7 @@ var pokemonRepository = (function() {
   }
 
   // add event listener to close modal when 'escape' key is pressed:
-  window.addEventListener('keydown', e => {
+  window.addEventListener('keydown', (e) => {
     if (
       e.key === 'Escape' &&
       $modalContainer.classList.contains('is-visible')
@@ -122,7 +122,7 @@ var pokemonRepository = (function() {
   });
 
   // add event listener to close modal when clicking outside modal
-  $modalContainer.addEventListener('click', e => {
+  $modalContainer.addEventListener('click', (e) => {
     // this is triggered even when clicking INSIDE modal
     // we only want this to close modal when clicking ouside modal:
     var target = e.target;
@@ -134,7 +134,7 @@ var pokemonRepository = (function() {
   // new showDetails function after use of API, with introduction of a modal:
   // update function to show modal:
   function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function() {
+    pokemonRepository.loadDetails(item).then(function () {
       pokemonRepository.showModal(
         item.name,
         'Height: ' + item.height + '\n' + 'Type(s): ' + item.types,
@@ -167,7 +167,7 @@ var pokemonRepository = (function() {
 
   // This function allows you to search for pokemon by name (or by using a few letters returning each pokemon with those letters; ex: searching for 'b' will return "bulbasaur" and Blastoise )
   function search(query) {
-    return repository.filter(function(creature) {
+    return repository.filter(function (creature) {
       return creature.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
   }
@@ -188,7 +188,7 @@ var pokemonRepository = (function() {
     loadDetails: loadDetails,
     showDetails: showDetails,
     showModal: showModal,
-    hideModal: hideModal
+    hideModal: hideModal,
   };
 })(); // End IIFE.
 
@@ -196,9 +196,9 @@ var pokemonRepository = (function() {
 var $pokemonList = document.querySelector('.pokemon-list');
 
 // New repository loop after loading list of pokemon from API:
-pokemonRepository.loadList().then(function() {
+pokemonRepository.loadList().then(function () {
   // Now the data is loaded!
-  pokemonRepository.getAll().forEach(function(pokemon) {
+  pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
@@ -226,3 +226,12 @@ function pokemonSearch() {
   }
 }
 /* eslint-enable no-unused-vars */
+// responsive navbar *****
+function myFunction() {
+  var x = document.getElementById('my-topnav');
+  if (x.className === 'top-nav') {
+    x.className += ' responsive';
+  } else {
+    x.className = 'top-nav';
+  }
+}

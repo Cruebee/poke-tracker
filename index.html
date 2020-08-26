@@ -17,56 +17,43 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
-    <title>Cruebee's Poke-tracker 2000</title>
+    <title>Poke-Dex 2000</title>
   </head>
   <body>
-    <header class="page-header">
-      <img
-        src="img/crue_jameson_logo.svg"
-        alt="Crue Jameson"
-        class="crue-logo"
-      />
-
-      <nav class="main-navigation page-header__item">
-        <ul role="menubar" class="navigation-list">
-          <li role="presentation">
-            <a
-              href="index.html"
-              role="menuitem"
-              target="_self"
-              class="navigation-list__item navigation-list__item--active"
-              >Pokedex</a
-            >
-          </li>
-          <li role="presentation">
-            <a
-              href="https://cruebee.github.io/portfolio-website/"
-              role="menuitem"
-              target="_blank"
-              class="navigation-list__item"
-              >About Creator</a
-            >
-          </li>
-          <li role="presentation">
-            <a
-              href="#"
-              role="menuitem"
-              target="self"
-              class="navigation-list__item"
-              >More coming soon!</a
-            >
-          </li>
-          <li role="presentation">
-            <a
-              href="https://cruebee.github.io/portfolio-website/contact.html"
-              role="menuitem"
-              target="_blank"
-              class="navigation-list__item"
-              >Contact Crue</a
-            >
-          </li>
-        </ul>
-      </nav>
+    <header>
+      <div id="navbar" data-toggle="collapse">
+        <nav class="top-nav" id="my-topnav">
+          <a
+            class="logo-link"
+            href="index.html"
+            role="menu-image"
+            target="_self"
+          >
+            <img
+              src="./img/crue_logo_new.svg"
+              alt="crue logo"
+              height="48"
+              width=""
+            />
+          </a>
+          <a href="index.html" role="menuitem" class="active" target="_self"
+            >Poke-Dex</a
+          >
+          <a href="cruejameson.com/about.html" role="menuitem" target="_self"
+            >About Crue</a
+          >
+          <a href="cruejameson.com/work.html" role="menuitem" target="_self"
+            >Crue's Projects</a
+          >
+          <a href="cruejameson.com/contact.html" role="menuitem" target="_self"
+            >Contact Crue</a
+          >
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- link with class="icon" used to open/close navbar on small screens -->
+        </nav>
+      </div>
     </header>
 
     <div class="app-wrap">
@@ -103,6 +90,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
     <script src="dist/js/fetch-polyfill-min.js"></script>
-    <script src="dist/js/scripts-min.js"></script>
+    <script src="src/js/scripts-min.js"></script>
   </body>
 </html>
